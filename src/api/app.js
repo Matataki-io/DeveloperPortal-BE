@@ -2,10 +2,10 @@
 const KoaRouter = require('koa-router')
 
 // Local Package
-const { app, newApp, removeApp, getAppDetail, getAppIcon, getAppSecret, postOauth } = require('../controllers/app')
+const { app, newApp, removeApp, getAppDetail, getAppIcon, getAppSecret, postOauth, resetSecret } = require('../controllers/app')
 const { getPermission, postPermission } = require('../controllers/app/permission')
 const { getAuthorize, postAuthorize } = require('../controllers/app/authorize')
-const { addVault, removeVault, getVaultList, getVault, updateVault } = require('../controllers/app/vault')
+const { addVault, removeVault, getVaultList, getVault, updateVault, getVaultbyName } = require('../controllers/app/vault')
 
 const AppRouter = new KoaRouter()
 
@@ -22,6 +22,7 @@ AppRouter.get("/permission", getPermission)
 // Info get related
 AppRouter.get("/detail", getAppDetail)
 AppRouter.get("/secret", getAppSecret)
+AppRouter.get("/resetsecret", resetSecret)
 // App Creation and deletion
 AppRouter.post("/new", newApp)
 AppRouter.get("/remove", removeApp)
@@ -33,6 +34,7 @@ AppRouter.get("/removevault", removeVault)
 // Vault Info get related
 AppRouter.get("/vaultlist", getVaultList)
 AppRouter.get("/vault", getVault)
+AppRouter.get("/vaultbyname", getVaultbyName)
 // Update Vault
 AppRouter.post("/updatevault", updateVault)
 
